@@ -1,9 +1,16 @@
 import zlib
 import struct
 import re
+import abc
+
+class headerabstract(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def pack():
+        pass
+    
 
 # Protocol Header
-class Header:
+class Header(headerabstract):
     def __init__(self, Version, HeaderLen, PackageLen, ConnectionID, Login, Password, ControlSum):
         self.Version = Version
         self.HeaderLen = HeaderLen
